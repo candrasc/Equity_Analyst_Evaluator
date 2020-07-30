@@ -1,6 +1,10 @@
 Evaluate the buy/sell/hold recommendations of analysts on a given security.
 
-We will first start by analyzing Tesla recommendations vs the performance of the stock after these recommendations. 
-We will then evaluate each firm by their return after buy/sell/hold recommendations.
+## Use the Stock Analyzer file to view the recommendations and percent return afterwards on a given security
+### Stocks must be traded on NYSE
+### YFinance library does not have reco's for all stocks. For best results, choose large cap stocks (particularily tech)
+
+
+I have also included a deeper dive into Tesla stock recommendations, where we look at recommendations before/during the recent price surge
 
 Tesla was chosen as it is a highly volatile stock that has had unpredictable fluctuations in price making many firm/analyst recommendations look ridiculous
