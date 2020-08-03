@@ -1,4 +1,4 @@
-#### The purpose of this project is to evaluate the historical buy/sell/hold recommendations of analysts on a given security.
+## The purpose of this project is to evaluate the historical buy/sell/hold recommendations of analysts on any given security on the NYSE
 The yfinance library gives us price data for any security listed on the New York Stock Exchange. Unfortunately, the method to pull historic analyst recommendations is slightly more limited as not all NYSE stocks have reco data available. However, most large cap stocks (especially tech stock) do have this data available and are therefore great candidates for this program. 
 
 ### How to use:
