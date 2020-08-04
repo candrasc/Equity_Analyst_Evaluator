@@ -7,7 +7,7 @@ The program will then plot all of the buy and sell recommendations available aga
 
 Boxplots are also created to show the distriubtion of returns after a buy/hold/sell reco are made. These boxplots cover both short and longterm periods of return so that we can have a full picture of performance. Here we would like to see that the performance after a buy reco is higher than that of sell or hold recos. 
 
-### Additional files
+### Additional files:
 
 I have also included a deeper dive into Tesla stock recommendations, where we look at recommendations before/during the recent price surge as well as evaluating different firms based on their recommendation performace. 
 
