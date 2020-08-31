@@ -1,5 +1,5 @@
 ## The purpose of this project is to evaluate the historical buy/sell/hold recommendations of analysts on any large cap publicly traded company in the US
-The yfinance library gives us price data for any security listed on the New York Stock Exchange. Unfortunately, the method to pull historic analyst recommendations is slightly more limited as not all NYSE stocks have reco data available. However, most large cap stocks (especially tech stock) do have this data available and are therefore great candidates for this program. 
+The yfinance library gives us price data for any security listed on the New York Stock Exchange. Unfortunately, the method to pull historic analyst recommendations is slightly more limited as not all stocks have reco data available. However, most large cap stocks (especially tech stock) do have this data available and are therefore great candidates for this program. 
 
 ### How to use:
 Use the 'Stock Reco Analyser' file and input any ticker for a stock trading on the NYSE into the designated ticker variable.
