@@ -45,15 +45,11 @@ def get_frames(symbol):
     return std_recos, df_prices
 
 def format_plot():
-    up
+    pass
+    #Coming soon
 
 def plot(symbol):
     std_recos, df_prices = get_frames(symbol)
     plt.plot(df_prices.Date, df_prices['Adj Close'])
     plt.title("{} Historical Prices".format(symbol))
     plt.show()
-
-
-"""
-Now we have the data frames, let's get to the plotting
-"""
