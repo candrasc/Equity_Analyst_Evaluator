@@ -5,10 +5,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import datetime as dt
 
-def get_symbol():
-    print('Enter the Ticker of the stock you would like to analyze: ')
-    symbol = str(input()) #Change this to user input later
-    return symbol
 
 def get_ticker(symbol):
     symbol = symbol
@@ -39,8 +35,7 @@ def remove_bad_recos(df):
     return df
 
 #This function combines all above functions to get the formatted dataframes for plotting
-def get_frames():
-    symbol = get_symbol()
+def get_frames(symbol):
     ticker = get_ticker(symbol)
     df_recos = get_recos(ticker)
     df_prices = get_prices(symbol)
@@ -49,9 +44,13 @@ def get_frames():
     std_recos = remove_bad_recos(std_recos)
     return std_recos, df_prices
 
-def plot():
-    std_recos, df_prices = get_frames()
+def format_plot():
+    up
+
+def plot(symbol):
+    std_recos, df_prices = get_frames(symbol)
     plt.plot(df_prices.Date, df_prices['Adj Close'])
+    plt.title("{} Historical Prices".format(symbol))
     plt.show()
 
 
