@@ -6,10 +6,26 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import stock_analyser
 from forms import graphing_form
+import os
+
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '4f23b79561dfe5fdc4990c4971632244'
+
+#eliminate caching so that we can change images 
+@app.after_request
+def add_header(response):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
+    response.headers['Cache-Control'] = 'public, max-age=0'
+    return response
 
 #This gets the ticker information from the submit form we set up
 def get_ticker():

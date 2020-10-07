@@ -4,7 +4,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import datetime as dt
-
+from flask import render_template
+import os
 
 def get_ticker(symbol):
     symbol = symbol
@@ -65,7 +66,8 @@ def format_dfs(df_recos, df_prices):
 
 #Current issue is that date axis is fucked up
 def line_plot(prices, plot_buy, plot_sell, symbol):
-    fig = plt.figure(figsize = (15,5))
+    fig = plt.figure(figsize = (15,8))
+    ax = fig.add_subplot(1, 1, 1)
     plt.style.use('ggplot')
 
     #variables for plot to make tweaking easier
@@ -76,13 +78,21 @@ def line_plot(prices, plot_buy, plot_sell, symbol):
     sell_color = 'r'
     marker_s = 70
 
-    ax = plt.subplot(1,1,1)
     plt.plot(prices.Date, prices['Adj Close'], color =line_color, alpha=line_alpha)
     plt.scatter(x = plot_buy.Date, y = plot_buy['Adj Close'], color = buy_color, marker = '^', label = 'Buy Reco',s=marker_s, alpha = marker_alpha)
     plt.scatter(x = plot_sell.Date, y = plot_sell['Adj Close'], color = sell_color, marker = 'v', label = 'Sell Reco',s=marker_s, alpha=marker_alpha)
     plt.title('{} Buy and Sell Recommendations'.format(symbol))
     plt.legend(loc=2)
-    return plt.show()
+
+    #https://stackoverflow.com/questions/50728328/python-how-to-show-matplotlib-in-flask
+    strFile = 'static/images/new_plot.png'
+
+    #Keep getting the GM picture... 
+    if os.path.isfile(strFile):
+        os.remove(strFile)
+    plt.savefig(strFile)
+    image = [i for i in os.listdir('static/images') if i.endswith('.png')][0]
+    return render_template('plots.html', name = 'new_plot', user_image = image)
 
 def plot(symbol):
     df_recos, df_prices = get_frames(symbol)
