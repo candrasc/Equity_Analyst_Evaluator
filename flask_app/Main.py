@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '4f23b79561dfe5fdc4990c4971632244'
 
-#eliminate caching so that we can change images 
+#eliminate caching so that we can change images
 @app.after_request
 def add_header(response):
     """
@@ -42,7 +42,7 @@ def input():
 @app.route('/', methods=['POST','GET'])
 def graph():
 	text = get_ticker()
-	return stock_analyser.plot(text)
+	return stock_analyser.flask_line_plot(text)
 
 
 if __name__ == '__main__':

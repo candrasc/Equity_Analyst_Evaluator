@@ -46,9 +46,10 @@ def get_frames(symbol):
     df_recos= remove_bad_recos(df_recos)
     return df_recos, df_prices
 """
-Now we have all the required functions to retrieve the required data.
+We have all the required functions to retrieve the required data.
 
 The below functions will be focused on formatting and plotting
+starting with the line plot that has buy sell recos on it
 """
 
 #Merges the recos and prices dfs for plotting and analysis
@@ -87,14 +88,19 @@ def line_plot(prices, plot_buy, plot_sell, symbol):
     #https://stackoverflow.com/questions/50728328/python-how-to-show-matplotlib-in-flask
     strFile = 'static/images/new_plot.png'
 
-    #Keep getting the GM picture... 
+    #Keep getting the GM picture...
     if os.path.isfile(strFile):
         os.remove(strFile)
     plt.savefig(strFile)
     image = [i for i in os.listdir('static/images') if i.endswith('.png')][0]
     return render_template('plots.html', name = 'new_plot', user_image = image)
 
-def plot(symbol):
+def flask_line_plot(symbol):
     df_recos, df_prices = get_frames(symbol)
     plot_buy, plot_sell = format_dfs(df_recos,df_prices)
     return line_plot(df_prices,plot_buy,plot_sell,symbol)
+
+"""
+Next we will format the dfs for boxplots in order to compare
+returns after a buy/hold/sell reco are made
+"""
