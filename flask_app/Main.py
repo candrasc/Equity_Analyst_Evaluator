@@ -42,7 +42,7 @@ def input():
 @app.route('/', methods=['POST','GET'])
 def graph():
 	text = get_ticker()
-	return stock_analyser.flask_line_plot(text)
+	return stock_analyser.flask_get_plots(text)
 
 
 if __name__ == '__main__':
