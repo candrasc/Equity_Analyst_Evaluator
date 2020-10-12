@@ -11,8 +11,8 @@ import os
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-
-app = Flask(__name__)
+#naming it like this for elastic beanstock
+application = app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '4f23b79561dfe5fdc4990c4971632244'
 
