@@ -2,7 +2,7 @@
 The yfinance library gives us price data for any security listed in the USA. Unfortunately, the method to pull historic analyst recommendations is slightly more limited as not all stocks have reco data available. However, most large cap stocks (especially tech stock) do have this data available and are therefore great candidates for this program. 
 
 ### How to use:
-I have created a Flask application and deployed it using AWS Elastic Beanstock, so that you can access the application directly from your browser. Please vist http://stockrecoevaluator-env.eba-xpfs3xmu.us-east-2.elasticbeanstalk.com/ to try it out!
+I have created a Flask application and deployed it using AWS Elastic Beanstock, so that you can access the application directly from your browser. Please visit http://stockrecoevaluator-env.eba-xpfs3xmu.us-east-2.elasticbeanstalk.com/ to try it out!
 
 Once you are on the webpage, input any ticker for a large cap stock trading in the USA into the designated ticker box.
 The program will then plot all of the buy and sell recommendations available against the historic daily close prices. This gives us a nice visualization on analyst sentiment towards the stock at different times, and how the stock performed after these predictions. 
