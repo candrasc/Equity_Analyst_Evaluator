@@ -178,7 +178,7 @@ def all_plots(df_prices, plot_buy, plot_sell, return_melt_short, return_melt_lon
     plt.subplot(3,1,3)
     long_return_plot(return_melt_long, symbol)
 
-    fig.suptitle('{} Analysis of Analyst Reommendations'.format(symbol), fontsize=20)
+    fig.suptitle('{} Analysis of Analyst Recommendations'.format(symbol), fontsize=20)
 
     strFile = 'static/images/new_plot.png'
     #Keep getting the GM picture...
