@@ -192,9 +192,12 @@ def flask_get_plots(symbol):
     Call this in Main.py to do all transformations, save plot, and then retrieve plot in plots template
     """
     #https://stackoverflow.com/questions/50728328/python-how-to-show-matplotlib-in-flask
-    df_recos, df_prices = get_frames(symbol)
-    plot_buy, plot_sell = format_dfs(df_recos,df_prices)
-    return_melt_short, return_melt_long = create_melted_dfs(df_prices, df_recos)
-    all_plots(df_prices, plot_buy, plot_sell, return_melt_short, return_melt_long, symbol)
-    image = [i for i in os.listdir('static/images') if i.endswith('.png')][0]
-    return render_template('plots.html', name = 'new_plot', user_image = image)
+    try:
+        df_recos, df_prices = get_frames(symbol)
+        plot_buy, plot_sell = format_dfs(df_recos,df_prices)
+        return_melt_short, return_melt_long = create_melted_dfs(df_prices, df_recos)
+        all_plots(df_prices, plot_buy, plot_sell, return_melt_short, return_melt_long, symbol)
+        image = [i for i in os.listdir('static/images') if i.endswith('.png')][0]
+        return render_template('plots.html', name = 'new_plot', user_image = image)
+    except:
+        return render_template('error.html',name = 'error')
