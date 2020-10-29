@@ -36,7 +36,7 @@ def get_ticker():
 #This launches our form template when we load the page
 @app.route('/')
 def input():
-	return render_template('submit.html')
+	return render_template('submit_form.html')
 
 #This uses the get_ticker in order to take the input from the form and create a graph
 @app.route('/', methods=['POST','GET'])
