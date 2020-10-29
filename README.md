@@ -1,5 +1,5 @@
 ## The purpose of this project is to evaluate the historical buy/sell/hold recommendations of analysts on any large cap publicly traded company in the US
-The yfinance library gives us price data for any security listed in the USA. Unfortunately, the method to pull historic analyst recommendations is slightly more limited as not all stocks have reco data available. However, most large cap stocks (especially tech stock) do have this data available and are therefore great candidates for this program. 
+The yfinance library gives us price data for any security listed in the USA. The historical recommendation data for these stocks is scraped from Yahoo Finance and compared against the historical prices after anaylst recommendations were made. Most large cap stocks (especially tech stock) do have recommendation data available and are therefore great candidates to try with this application. However, not all listed companies have reco data available in Yahoo Finance and therefore cannot be evaluated. 
 
 ### How to use:
 I have created a Flask application and hosted it using AWS Elastic Beanstock, so that you can access the application directly from your browser. Please visit http://stockrecoevaluator-env.eba-xpfs3xmu.us-east-2.elasticbeanstalk.com/ to try it out!
