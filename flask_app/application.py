@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request
 import matplotlib.pyplot as plt
 import pandas as pd
-import stock_analyser
+from Helpers.stock_analyser_helper import DoesItAll
 from forms import graphing_form
 import os
 
@@ -28,10 +28,13 @@ def add_header(response):
     return response
 
 #This gets the ticker information from the submit form we set up
-def get_ticker():
-    Ticker = request.form['Ticker']
-    processed_text = Ticker.upper()
-    return processed_text
+def get_info():
+    Ticker = request.form['Ticker'].upper()
+    DateMin = request.form['DateMin']
+    DateMax = request.form['DateMax']
+    ReturnWindows = request.form['ReturnWindows']
+    ReturnWindows = [int(s) for s in ReturnWindows.split(',')]
+    return Ticker, DateMin, DateMax, ReturnWindows
 
 #This launches our form template when we load the page
 @app.route('/')
@@ -40,9 +43,17 @@ def input():
 
 #This uses the get_ticker in order to take the input from the form and create a graph
 @app.route('/', methods=['POST','GET'])
-def graph():
-	text = get_ticker()
-	return stock_analyser.flask_get_plots(text)
+def flask_get_plots():
+    Symbol , DateMin, DateMax, ReturnWindows = get_info()
+    frames = DoesItAll(Symbol, DateMin, DateMax, ReturnWindows)
+
+    try:
+        frames.all_plots()
+        image = [i for i in os.listdir('static/images') if i.endswith('.png')][0]
+        return render_template('plots.html', name = 'new_plot', user_image = image)
+    except:
+        return render_template('error.html',name = 'error')
+
 
 
 if __name__ == '__main__':
