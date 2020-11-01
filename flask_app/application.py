@@ -33,7 +33,11 @@ def get_info():
     DateMin = request.form['DateMin']
     DateMax = request.form['DateMax']
     ReturnWindows = request.form['ReturnWindows']
-    ReturnWindows = [int(s) for s in ReturnWindows.split(',')]
+    if ReturnWindows == "":
+        ReturnWindows = [30,60,180,360]
+    else:
+        ReturnWindows = [int(s) for s in ReturnWindows.split(',')]
+
     return Ticker, DateMin, DateMax, ReturnWindows
 
 #This launches our form template when we load the page
