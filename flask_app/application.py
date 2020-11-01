@@ -28,17 +28,6 @@ def add_header(response):
     return response
 
 #This gets the ticker information from the submit form we set up
-def get_info():
-    Ticker = request.form['Ticker'].upper()
-    DateMin = request.form['DateMin']
-    DateMax = request.form['DateMax']
-    ReturnWindows = request.form['ReturnWindows']
-    if ReturnWindows == "":
-        ReturnWindows = [30,60,180,360]
-    else:
-        ReturnWindows = [int(s) for s in ReturnWindows.split(',')]
-
-    return Ticker, DateMin, DateMax, ReturnWindows
 
 #This launches our form template when we load the page
 @app.route('/')
@@ -58,6 +47,24 @@ def flask_get_plots():
     except:
         return render_template('error.html',name = 'error')
 
+def get_info():
+    Ticker = request.form['Ticker'].upper()
+    DateMin = request.form['DateMin']
+    DateMax = request.form['DateMax']
+    ReturnWindows = request.form['ReturnWindows']
+
+    if DateMin == "":
+        DateMin = None
+
+    if DateMax == "":
+        DateMax = None
+
+    if ReturnWindows == "":
+        ReturnWindows = [30,60,180,360]
+    else:
+        ReturnWindows = [int(s) for s in ReturnWindows.split(',')]
+
+    return Ticker, DateMin, DateMax, ReturnWindows
 
 
 if __name__ == '__main__':
