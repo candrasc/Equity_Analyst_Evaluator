@@ -48,9 +48,9 @@ def flask_get_plots():
         return render_template('error.html',name = 'error')
 
 def get_info():
-    Ticker = request.form['Ticker'].upper()
-    DateMin = request.form['DateMin']
-    DateMax = request.form['DateMax']
+    Ticker = request.form['Ticker'].replace(" ", "").upper()
+    DateMin = request.form['DateMin'].replace(" ", "")
+    DateMax = request.form['DateMax'].replace(" ", "")
     ReturnWindows = request.form['ReturnWindows']
 
     if DateMin == "":

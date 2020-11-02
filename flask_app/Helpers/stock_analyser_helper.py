@@ -142,7 +142,7 @@ class DoesItAll:
         ax = ax or plt.gca()
 
         sns.boxplot(x='variable',y = 'value', hue = 'To Grade',data = df)
-        plt.title('{} Short Run Percent Return After Reco'.format(symbol))
+        plt.title('{} Percent Return After Reco'.format(symbol))
         plt.ylabel('Percent Return')
         plt.xlabel('Return Window')
         plt.legend(loc = 2)
@@ -156,7 +156,7 @@ class DoesItAll:
     def all_plots(self):
         symbol = self.symbol
 
-        fig, ax = plt.subplots(2,1,figsize=(10,15))
+        fig, ax = plt.subplots(2,1,figsize=(15,15))
         plt.subplots_adjust(hspace = 0.4)
 
         plt.subplot(2, 1, 1)
@@ -165,7 +165,7 @@ class DoesItAll:
         plt.subplot(2,1,2)
         self.pct_return_boxplot()
 
-        fig.suptitle('{} Analysis of Analyst Recommendations'.format(symbol), fontsize=20)
+        fig.suptitle('{} Evaluation of Analyst Recommendations'.format(symbol), fontsize=20)
 
 
         full_path = 'static/images/new_plot.png'
