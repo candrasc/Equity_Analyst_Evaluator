@@ -57,11 +57,16 @@ class DoesItAll:
         #Remove bad recos
         df = df.loc[(df['To Grade'] == 'Hold')|(df['To Grade']=='Buy')|(df['To Grade']=='Sell')]
 
+        bad_dates = df.loc[df.Date.isin(self.prices.Date)==False].Date.reset_index()
+        bad_dates = bad_dates.drop(columns = 'index')
+        df.Date = np.where(df.Date.isin(bad_dates.Date), df.Date - timedelta(days=2), df.Date)
+
         return df
 
     def _prep_for_lineplot(self):
         recos = self.recos
         prices = self.prices
+
 
         df_buy = recos.loc[recos['To Grade']=='Buy']
         df_sell = recos.loc[recos['To Grade']=='Sell']
