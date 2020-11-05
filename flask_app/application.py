@@ -4,12 +4,11 @@
 from flask import Flask, render_template, request
 import matplotlib.pyplot as plt
 import pandas as pd
-from Helpers.stock_analyser_helper import DoesItAll
+from stock_analyser_helper import DoesItAll
 from forms import graphing_form
 import os
 
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
+
 
 #naming it like this for elastic beanstock
 application = app = Flask(__name__)
