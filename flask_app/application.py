@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request
 import matplotlib.pyplot as plt
 import pandas as pd
-from stock_analyser_helper import DoesItAll
+from stock_analyser import DoesItAll
 from forms import graphing_form
 import os
 
